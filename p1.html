@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <title>Full Name Program</title> 
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js">
+   //ajs library access//
+    </script>
+</head>
+<style>
+    h1 {
+      color: red;
+    }
+
+    
+</style>
+
+<body>
+     <div ng-app="myApp" ng-controller="myCtrl">    
+     <h1>Full Name Program</h1>                
+  /'creating an input button with text bar'/
+ <input type="text" ng-model="firstName" placeholder="Enter First Name">
+ <input type="text" ng-model="lastName" placeholder="Enter Last Name">
+ <br>
+ Full Name: {{firstName + " " + lastName}}
+      
+ </div>
+
+ 
+ <script>                                    
+ // backend script node.js //
+ /*var keyword is used to declare variables in JavaScript.*/
+var app = angular.module("myApp", []);   
+  
+//angular.module is a function used to register the AJS module, where "myApp is the parameter of angular.js//
+/*app.controller: This is a method provided by the AngularJS framework that is used to register a 
+controller function with an AngularJS application.*/
+  
+app.controller("myCtrl", function($scope) 
+{
+     $scope.firstName = ""; $scope.lastName = "";
+ });
+
+  /*function($scope) { ... }: This is the controller function itself. 
+  It takes an argument named $scope, which is a special object provided by AngularJS 
+  that acts as the glue between your view (HTML) and your model (data).*/
+  
+ </script>
+ 
+</body>
+ 
+</html>
