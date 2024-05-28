@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html ng-app="userApp">
+  <head>
+    <title>angularJS CRUD Application for Users</title>
+  </head>
+  <body ng-controller="userController">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js">
+    </script>
+
+    <h1>User Management</h1>
+    <table border="1">
+    <thead>
+        <tr>
+            <th>name</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        <tr ng-repeat="user in users">
+          <td>{{ user.name }}</td>
+          <td>{{ user.email }}</td>
+          <td>
+            <button ng-click="editUser(user)">editUser</button>
+            <button ng-click="deleteUser(user)">deleteUser</button>
+          </td>
+        </tr>
+    </tbody>
+
+    </table>
+    <hr />
+
+    <h2>Create User</h2>
+        <input type="text" ng-model="newUser.name" placeholder="Name">
+        <input type="text" ng-model="newUser.email" placeholder="Email">
+        
+        <button ng-click="createUser()">Create</button>
+    <hr />
+
+    <h2>Edit User</h2>
+        <input type="text" ng-model="editedUser.name" placeholder="Name">
+        <input type="text" ng-model="editedUser.email" placeholder="Email">
+
+        <button ng-click="updateUser()">Update</button>
+    <hr/>
+        
+    <script>
+      var app=angular.module('userApp',[])
+app.controller('userController',function($scope) 
+{
+    $scope.users = [
+        { name: 'Abhishek', email: 'abhishekab7781@gmail.com'},
+        { name: 'thushar', email: 'urshithaCherugoli@gmail.com'}
+    ];
+
+    $scope.newUser = {};
+
+    $scope.createUser = function() 
+    {
+        $scope.users.push($scope.newUser);
+        $scope.newUser ={};
+    };
+
+
+    $scope.editUser = function(user) 
+    {
+        $scope.editedUser = user;
+    };
+
+
+    $scope.updateUser = function() 
+    {
+        $scope.editedUser = {};
+    };
+
+
+    $scope.deleteUser = function(user) 
+    {
+        $scope.users.splice($scope.users.indexOf(user),1);
+    };
+});
+    </script>
+  </body>
+</html>
